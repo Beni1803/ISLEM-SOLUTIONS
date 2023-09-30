@@ -1,83 +1,131 @@
-/* Reset some default browser styles */
-body,
-h1,
-h2,
-h3,
-p {
+/* Reset default browser styles */
+body, h1, h2, h3, p, ul, li {
   margin: 0;
   padding: 0;
 }
 
-/* Set a background color for the entire page */
+/* Background for the entire page */
 body {
-  background-color: #f0f0f0; /* Replace with your preferred background color */
-  font-family: Arial, sans-serif; /* Choose a suitable font family */
-  color: #333; /* Default text color */
+  background-color: #f0f0f0;
+  font-family: Arial, sans-serif;
+  color: #333;
 }
 
-/* Style the header */
-header {
+/* Header styles */
+.header-banner {
   background-color: #333;
   color: #fff;
-  padding: 10px 0;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 2em;
+}
+
+/* Navbar styles */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;  /* Allow wrapping */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-tabs {
+  border-bottom: none;
+  order: 1; /* Adjust ordering */
+}
+
+.nav-tabs .nav-link {
+  border-radius: 0;
+  border: none;
+  color: #ff0000;
+  padding: 10px 20px;
+}
+
+.nav-tabs .nav-link.active, .nav-tabs .nav-link:hover {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Position the search and user dropdown */
+.navbar .form-inline, .navbar-nav {
+  width: 100%;
+  justify-content: end;
+}
+
+.navbar .form-inline {
+  order: 2; /* Adjust ordering */
+}
+
+.navbar-nav {
+  order: 3; /* Adjust ordering */
+}
+/* Center the search bar and add some spacing */
+.search-section {
+  margin-top: 15px;
+}
+
+.tool-tabs {
+  width: 100%;  /* Take full width to center itself */
   text-align: center;
 }
 
-/* Style the navigation bar */
-.navbar {
-  background-color: #333;
-  color: #ff0000;
+.search-section {
+  width: 100%;  /* Take full width to center itself */
+  text-align: center;
+  order: 2;
 }
 
-/* Style navigation links */
-.navbar a {
-  color: #ff0000;
+.user-section {
+  order: 1;
+}
+/* Sidebar styles */
+aside {
+  background-color: #444;
+  width: 250px;
+  float: left;
+  height: 100vh;
+  overflow-y: auto;
 }
 
-/* Add some space to the content */
+/* Content area */
 .content {
+  margin-left: 270px;
   padding: 20px;
-  background-color: #fff; /* Content background color */
-  border-radius: 5px; /* Add rounded corners to content */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+  background-color: #fff;
+  min-height: 80vh;
 }
 
-/* Style the footer */
+/* Footer styles */
 footer {
   background-color: #333;
   color: #fff;
   text-align: center;
   padding: 10px 0;
-}
-
-/* Style links */
-a {
-  color: #007bff; /* Blue link color */
-  text-decoration: none;
+  clear: both; /* Clear floats */
 }
 
 a:hover {
-  text-decoration: underline; /* Underline on hover */
+  text-decoration: none;
 }
 
-/* Add a border to images */
-img {
-  border: 1px solid #ccc;
+button:hover, input[type="submit"]:hover {
+  background-color: #0056b3;
 }
 
-/* Style buttons */
-button,
-input[type="submit"] {
-  background-color: #007bff; /* Blue button color */
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px; /* Add rounded corners to buttons */
-  transition: background-color 0.3s ease; /* Smooth hover transition */
+/* Clearfix for floated elements */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
 }
 
-button:hover,
-input[type="submit"]:hover {
-  background-color: #0056b3; /* Darker blue on hover */
+/* Responsive settings */
+@media only screen and (max-width: 992px) {
+  .content {
+    margin-left: 0;
+  }
+  aside {
+    width: 100%;
+    height: auto;
+    float: none;
+  }
 }
