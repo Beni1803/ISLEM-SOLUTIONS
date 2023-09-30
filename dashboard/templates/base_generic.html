@@ -1,20 +1,36 @@
-<!-- templates/base_generic.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Django Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
 </head>
 <body>
     <header>
-        <h1>Welcome to Django Dashboard</h1>
+        <nav>
+            <h1>Welcome to Islem Apps</h1>
+        </nav>
     </header>
     <main>
-        {% block content %}
-        <!-- This space will be filled by the content of child templates -->
-        {% endblock %}
+        <section class="content">
+            {% block content %}
+            <!-- This space will be filled by the content of child templates -->
+            {% endblock %}
+        </section>
     </main>
     <footer>
-        <p>&copy; 2023 Django Dashboard</p>
+        <p>&copy; <span id="current-year"></span> Islem Dashboard | <span id="current-month"></span></p>
     </footer>
+    
+    <script>
+        // JavaScript to set the current year and month dynamically
+        const currentDate = new Date();
+        const currentYear = currentDate.getFullYear();
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const currentMonth = months[currentDate.getMonth()];
+        
+        document.getElementById("current-year").textContent = currentYear;
+        document.getElementById("current-month").textContent = currentMonth;
+    </script>
 </body>
 </html>
