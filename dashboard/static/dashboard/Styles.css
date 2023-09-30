@@ -1,0 +1,83 @@
+/* Reset some default browser styles */
+body,
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Set a background color for the entire page */
+body {
+  background-color: #f0f0f0; /* Replace with your preferred background color */
+  font-family: Arial, sans-serif; /* Choose a suitable font family */
+  color: #333; /* Default text color */
+}
+
+/* Style the header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+
+/* Style the navigation bar */
+.navbar {
+  background-color: #333;
+  color: #ff0000;
+}
+
+/* Style navigation links */
+.navbar a {
+  color: #ff0000;
+}
+
+/* Add some space to the content */
+.content {
+  padding: 20px;
+  background-color: #fff; /* Content background color */
+  border-radius: 5px; /* Add rounded corners to content */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Style the footer */
+footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+/* Style links */
+a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+/* Add a border to images */
+img {
+  border: 1px solid #ccc;
+}
+
+/* Style buttons */
+button,
+input[type="submit"] {
+  background-color: #007bff; /* Blue button color */
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px; /* Add rounded corners to buttons */
+  transition: background-color 0.3s ease; /* Smooth hover transition */
+}
+
+button:hover,
+input[type="submit"]:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
