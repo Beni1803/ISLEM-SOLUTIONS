@@ -1,10 +1,16 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>My Web Apps</h1>
+  <h1>Welcome to My Web Apps Dashboard</h1>
+  <p>This is your personalized dashboard where you can manage your web apps.</p>
+
+  <h2>Your Web Apps</h2>
   <ul>
   {% for app in apps %}
-    <li><a href="{{ app.url }}">{{ app.name }}</a> - {{ app.description }}</li>
+    <li>
+      <strong>{{ app.name }}</strong> - {{ app.description }}<br>
+      URL: <a href="{{ app.url }}" target="_blank">{{ app.url }}</a>
+    </li>
   {% endfor %}
   </ul>
 {% endblock %}
