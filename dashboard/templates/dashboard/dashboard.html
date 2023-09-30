@@ -1,0 +1,10 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>My Web Apps</h1>
+  <ul>
+  {% for app in apps %}
+    <li><a href="{{ app.url }}">{{ app.name }}</a> - {{ app.description }}</li>
+  {% endfor %}
+  </ul>
+{% endblock %}

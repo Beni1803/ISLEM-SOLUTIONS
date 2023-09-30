@@ -1,0 +1,20 @@
+<!-- templates/base_generic.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Django Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Django Dashboard</h1>
+    </header>
+    <main>
+        {% block content %}
+        <!-- This space will be filled by the content of child templates -->
+        {% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2023 Django Dashboard</p>
+    </footer>
+</body>
+</html>
