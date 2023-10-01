@@ -49,13 +49,22 @@
         <!-- Tabs -->
         <ul class="nav nav-tabs tool-tabs">
             <li class="nav-item">
-                <a class="nav-link active" href="#tool1" data-toggle="tab">Tool1</a>
+                <a class="nav-link active" href="#tool1" data-toggle="tab">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#tool2" data-toggle="tab">Tool2</a>
+                <a class="nav-link" href="#tool2" data-toggle="tab">CSV Filler</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#tool3" data-toggle="tab">Tool3</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="#tool4" data-toggle="tab">Tool4</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tool5" data-toggle="tab">Tool5</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#tool6" data-toggle="tab">Tool6</a>
             </li>
         </ul>
 
@@ -79,6 +88,7 @@
         <li class="list-group-item"><a href="#tool1" data-toggle="tab">Tool 1</a></li>
         <li class="list-group-item"><a href="#tool2" data-toggle="tab">Tool 2</a></li>
         <li class="list-group-item"><a href="#tool3" data-toggle="tab">Tool 3</a></li>
+        
         <!-- ... add more as required ... -->
 
         <!-- Favorites or Most-Used Tools -->
@@ -91,7 +101,6 @@
     <!-- Other Information or Quick Actions -->
     <div class="sidebar-footer mt-4">
         <a href="#" class="btn btn-primary btn-block">Quick Action 1</a>
-        <a href="#" class="btn btn-secondary btn-block mt-2">Quick Action 2</a>
     </div>
 </aside>
 
@@ -112,7 +121,22 @@
             </div>
             <div id="tool3" class="tab-pane fade">
                 {% block tool3_content %}
-                <!-- Tool3 content goes here -->
+                <!-- Tool content goes here -->
+                {% endblock %}
+            </div>
+            <div id="tool4" class="tab-pane fade">
+                {% block tool4_content %}
+                <!-- Tool content goes here -->
+                {% endblock %}
+            </div>
+            <div id="tool5" class="tab-pane fade">
+                {% block tool5_content %}
+                <!-- Tool content goes here -->
+                {% endblock %}
+            </div>
+            <div id="tool6" class="tab-pane fade">
+                {% block tool6_content %}
+                <!-- Tool content goes here -->
                 {% endblock %}
             </div>
         </div>
