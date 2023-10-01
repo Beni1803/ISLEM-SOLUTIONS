@@ -1,31 +1,67 @@
-/* static/css/main.css */
-
+/* Body setup */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 40px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Use viewport height to ensure full page height */
 }
 
-h1 {
-    color: #333;
+/* Main content flex setup */
+.container {
+    flex: 1;  /* Allow the main content to grow and take available space */
 }
 
-ul {
-    list-style-type: none;
-    padding: 0;
+/* Sticky Footer */
+.footer {
+    background-color: #343a40;  /* Dark gray background */
+    color: #ffffff;             /* White text */
 }
 
-ul li {
-    padding: 8px;
-    background-color: #ddd;
-    margin-bottom: 8px;
+/* Card enhancements */
+.card {
+    transition: transform 0.3s;
 }
 
-ul li a {
-    text-decoration: none;
-    color: #333;
+.card:hover {
+    transform: scale(1.05);
 }
 
-ul li a:hover {
-    color: #555;
+/* Navbar enhancements */
+.navbar {
+    margin-bottom: 30px;
+}
+
+/* Jumbotron adjustments */
+.jumbotron {
+    background-color: #e9ecef;  /* Lighter gray background for contrast */
+}
+
+/* Features Section */
+.features-icon {
+    color: #007bff; /* Bootstrap primary color */
+    margin-bottom: 20px;
+}
+
+.features-section h4 {
+    margin-top: 10px;
+}
+
+/* Testimonials Section */
+blockquote {
+    background: #f9f9f9;
+    padding: 20px;
+    border-left: 5px solid #007bff; /* Bootstrap primary color */
+}
+
+/* Contact Section */
+.contact-section form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-section input,
+.contact-section textarea {
+    margin-bottom: 20px;
 }
