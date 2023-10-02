@@ -5,8 +5,23 @@ from .models import UploadedCSV
 from .forms import UploadCSVForm, UpdateCSVForm
 import csv
 import logging
+from django.shortcuts import render, redirect
 
 logger = logging.getLogger(__name__)
+
+def csv_main_page(request):
+    if request.method == 'POST':
+        upload_form = UploadCSVForm(request.POST, request.FILES)
+        update_form = UpdateCSVForm(request.POST)
+    else:
+        upload_form = UploadCSVForm()
+        update_form = UpdateCSVForm()
+
+    context = {
+        'upload_form': upload_form,
+        'update_form': update_form
+    }
+    return render(request, 'csv_filler/csv_main_page.html', context)
 
 def validate_csv_consistency(csv_path):
     inconsistent_lines = []
