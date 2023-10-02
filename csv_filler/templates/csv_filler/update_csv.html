@@ -1,5 +1,32 @@
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update</button>
-</form>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/form_styles.css' %}">
+    <title>Update CSV</title>
+</head>
+<body>
+<div class="django-form">
+    <!-- Display feedback messages to the user -->
+    {% if messages %}
+    <div class="messages">
+        {% for message in messages %}
+        <div class="{% if message.tags %}alert alert-{{ message.tags }}{% endif %}">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="update-btn" type="submit">Update</button>
+    </form>
+    <!-- Moved the download link outside the form, so it won't get submitted with the form -->
+    <a href="{% url 'download_csv' %}" id="download-btn" class="btn">Download Updated CSV</a>
+</div>
+</body>
+</html>
