@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telecommunication Spectrum Plan and Block Finder</title>
+</head>
+<body>
+
+<h1>Welcome to the Spectrum Plan and Block Finder</h1>
+<p>This tool helps visualize the telecommunication spectrum plan.</p>
+
+<!-- This will be the input field for users -->
+<form action="#" method="post">
+    {% csrf_token %}
+    <label for="spectrum-range">Enter Spectrum Range:</label>
+    <input type="text" id="spectrum-range" name="spectrum-range">
+    <input type="submit" value="Find Block">
+</form>
+
+<!-- Display area for block codes -->
+<div id="block-codes">
+    <!-- You'll dynamically populate this area based on user input later on -->
+</div>
+
+</body>
+</html>

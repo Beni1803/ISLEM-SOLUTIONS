@@ -30,7 +30,7 @@
             </li>
             <!-- Placeholder for Upcoming App 1 -->
             <li class="nav-item">
-                <span class="nav-link text-muted">Upcoming App 1 (Coming Soon)</span>
+                <a class="nav-link" href="{% url 'home' %}">Spectrum Finder</a>
             </li>
             <!-- Placeholder for Upcoming App 2 -->
             <li class="nav-item">
@@ -110,14 +110,14 @@
         <!-- Placeholder for Upcoming App 1 -->
         <div class="col-md-4">
             <div class="card mb-4">
-                <img src="{% static 'img/coming_soon.png' %}" class="card-img-top" alt="Coming Soon">
+                <img src="{% static 'img/spectrum_finder.png' %}" class="card-img-top" alt="Spectrum Finder">
                 <div class="card-body">
-                    <h5 class="card-title">Upcoming App 1</h5>
-                    <p class="card-text">Exciting features on the way!</p>
-                    <button class="btn btn-secondary" disabled>Coming Soon</button>
+                    <h5 class="card-title">Spectrum Finder</h5>
+                    <p class="card-text">Visualize the telecommunication spectrum plan.</p>
+                    <a href="{% url 'home' %}" class="btn btn-primary">Go to Spectrum Finder</a>
                 </div>
             </div>
-        </div>
+        </div>        
 
         <!-- Placeholder for Upcoming App 2 -->
         <div class="col-md-4">
