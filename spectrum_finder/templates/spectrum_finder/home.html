@@ -7,24 +7,38 @@
     <title>Telecommunication Spectrum Plan and Block Finder</title>
 </head>
 <body>
+    <h1>Welcome to the Spectrum Plan and Block Finder</h1>
+    <p>This tool helps visualize the telecommunication spectrum plan.</p>
 
-<h1>Welcome to the Spectrum Plan and Block Finder</h1>
-<p>This tool helps visualize the telecommunication spectrum plan.</p>
+    <!-- Display messages -->
+    {% if messages %}
+        <div id="messages">
+            {% for message in messages %}
+                <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    <!-- Form to input the start and stop frequencies -->
+    <form action="{% url 'find_band_blocks' %}" method="post">
+        {% csrf_token %}
+        <label for="start-ul">Start Frequency (UL):</label>
+        <input type="text" id="start-ul" name="start_ul">
+        <label for="stop-ul">Stop Frequency (UL):</label>
+        <input type="text" id="stop-ul" name="stop_ul">
+        <input type="submit" value="Find Band-Block">
+    </form>
 
-<!-- Form to input the start and stop frequencies -->
-<form action="" method="post">
-    {% csrf_token %}
-    <label for="start-ul">Start Frequency (UL):</label>
-    <input type="text" id="start-ul" name="start_ul">
-    <label for="stop-ul">Stop Frequency (UL):</label>
-    <input type="text" id="stop-ul" name="stop_ul">
-    <input type="submit" value="Find Band-Block">
-</form>
-
-<!-- Display area for the corresponding Band-Block -->
-{% if band_block %}
-    <p>The corresponding Band-Block is: <strong>{{ band_block }}</strong></p>
-{% endif %}
-
+    <!-- Display the table of selected Band-Blocks grouped by Frequency Band -->
+    {% if selected_band_blocks_grouped %}
+        {% for freq_band, band_blocks in selected_band_blocks_grouped.items %}
+            <h2>Frequency Band: {{ freq_band }}</h2>
+            <ul>
+                {% for band_block in band_blocks %}
+                    <li>{{ band_block.Band_Block }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    {% endif %}
 </body>
 </html>
