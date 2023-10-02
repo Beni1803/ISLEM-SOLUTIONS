@@ -5,6 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecommunication Spectrum Plan and Block Finder</title>
+    <style>
+        /* Add some CSS styles for the copy button */
+        .copy-button {
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to the Spectrum Plan and Block Finder</h1>
@@ -31,12 +43,27 @@
     {% if selected_band_blocks_grouped %}
         {% for freq_band, band_blocks in selected_band_blocks_grouped.items %}
             <h2>Frequency Band: {{ freq_band }}</h2>
-            <ul>
+            <p>
                 {% for band_block in band_blocks %}
-                    <li>{{ band_block.Band_Block }}</li>
+                    {{ band_block.Band_Block }}
+                    <button class="copy-button" onclick="copyToClipboard('{{ band_block.Band_Block }}')">Copy</button>
+                    {% if not forloop.last %}|{% endif %}
                 {% endfor %}
-            </ul>
+            </p>
         {% endfor %}
     {% endif %}
+
+    <!-- JavaScript function to copy text to clipboard -->
+    <script>
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('Copied to clipboard: ' + text);
+        }
+    </script>
 </body>
 </html>
