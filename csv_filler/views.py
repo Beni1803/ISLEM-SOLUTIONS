@@ -5,48 +5,14 @@ from .models import UploadedCSV
 from .forms import UploadCSVForm, UpdateCSVForm
 import csv
 import logging
-from django.shortcuts import render, redirect
 
 logger = logging.getLogger(__name__)
-
-def csv_main_page(request):
-    if request.method == 'POST':
-        upload_form = UploadCSVForm(request.POST, request.FILES)
-        update_form = UpdateCSVForm(request.POST)
-    else:
-        upload_form = UploadCSVForm()
-        update_form = UpdateCSVForm()
-
-    context = {
-        'upload_form': upload_form,
-        'update_form': update_form
-    }
-    return render(request, 'csv_filler/csv_main_page.html', context)
-
-def validate_csv_consistency(csv_path):
-    inconsistent_lines = []
-    with open(csv_path, 'r') as csv_file:
-        reader = csv.reader(csv_file)
-        column_count = len(next(reader))  # Get column count from the header row
-        for line_number, row in enumerate(reader, start=2):  # Start from 2 because we've already read the header
-            if len(row) != column_count:
-                inconsistent_lines.append(line_number)
-    return inconsistent_lines
 
 def upload_csv(request):
     if request.method == 'POST':
         form = UploadCSVForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
-
-            # Validate the uploaded CSV for consistency
-            latest_csv = UploadedCSV.objects.latest('uploaded_at')
-            inconsistent_lines = validate_csv_consistency(latest_csv.csv_file.path)
-            if inconsistent_lines:
-                # Inform the user about inconsistent lines but continue processing
-                lines_str = ", ".join(str(line) for line in inconsistent_lines)
-                messages.warning(request, f"Data inconsistency detected on lines: {lines_str}. Proceeding with valid data.")
-
             return redirect('update_csv')
     else:
         form = UploadCSVForm()
@@ -63,23 +29,23 @@ def update_csv(request):
                 with open(latest_csv.csv_file.path, 'r+', newline='') as csv_file:
                     reader = csv.DictReader(csv_file)
                     rows = list(reader)
-                    
+
                     # Determine the title of the first column
                     row_title_column = reader.fieldnames[0]
 
                     # Gather unique values from the first column for potential row values
                     unique_row_values = set(row[row_title_column] for row in rows)
-                    
+
                     # Extract potential row values from user input by checking against unique_row_values
                     potential_row_values = [val for val in unique_row_values if val in form.cleaned_data['row_value']]
-                    
+
                     # Extract potential column names from user input by checking against all column names
                     potential_column_names = [col for col in reader.fieldnames if col in form.cleaned_data['column_name']]
-                    
+
                     if not potential_column_names:
                         messages.error(request, "No matching column names found in the CSV.")
                         return redirect('update_csv')
-                    
+
                     total_rows = len(rows)
                     rows_updated = 0
 
