@@ -19,13 +19,11 @@
         </div>
     {% endif %}
     
-    <!-- Form to input the start and stop frequencies -->
+    <!-- Form to input the frequency range -->
     <form action="{% url 'find_band_blocks' %}" method="post">
         {% csrf_token %}
-        <label for="start-ul">Start Frequency (UL):</label>
-        <input type="text" id="start-ul" name="start_ul">
-        <label for="stop-ul">Stop Frequency (UL):</label>
-        <input type="text" id="stop-ul" name="stop_ul">
+        <label for="frequency-range">Frequency Range (start_ul - stop_ul):</label>
+        <input type="text" id="frequency-range" name="frequency_range" placeholder="start_ul - stop_ul">
         <input type="submit" value="Find Band-Block">
     </form>
 
